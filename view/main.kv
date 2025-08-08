@@ -1,0 +1,44 @@
+<MyLayout>
+	canvas.before:
+		Color:
+			rgba: (0,0,1,1)
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+    BoxLayout:
+        size_hint_y: None
+        height: "48dp"
+        width: "350dp"
+        spacing: "2dp"
+        padding: "2dp"
+
+        ToggleButton:
+            text: "Debug"
+            id: debug
+            on_release: root.build()
+        Button:
+            text: "New shape"
+            on_release: root.push_shape()
+        Button:
+            text: "Build"
+            on_release: root.build()
+        Button:
+            text: "Reset"
+            on_release: root.reset()
+
+    BoxLayout:
+        size_hint_y: None
+        height: "48dp"
+        width: "400dp"
+        top: root.top
+        spacing: "2dp"
+        padding: "2dp"
+        Label:
+            id: status
+            text: "Status"
+            width: "300dp"
+        Button:
+            right: root.right
+            text: "Exit"
+            on_release: root.Exit
