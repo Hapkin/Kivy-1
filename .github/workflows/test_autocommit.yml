@@ -1,0 +1,24 @@
+name: Scheduled Commit
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Make changes
+        run: |
+          date >>temp.txt
+
+      - name: Commit changes
+        run: |
+          git config --local user.name "Hapkin"
+          git config --local user.email ${{ secrets.ENVMAIL }}
+          git commit -m "new dawn." -- temp.txt
+          git push
