@@ -11,12 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: Debug email
-        run: echo ${{ secrets.MY_TEST }} >>temp.txt
-        
-      - name: Make changes
+      - name: Debug 
         run: |
-          echo "$(date)" >> temp.txt  # Append the current date to temp.txt
+          echo "${{ secrets.MY_TEST }}" >> temp.txt
 
       - name: Configure Git
         run: |
