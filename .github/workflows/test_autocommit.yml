@@ -15,11 +15,12 @@ jobs:
 
       - name: Make changes
         run: |
-          date >>temp.txt
+          echo date >>temp.txt
 
       - name: Commit changes
         run: |
           git config --local user.name "Hapkin"
           git config --local user.email ${{ secrets.ENVMAIL }}
+          git add update.txt
           git commit -m "new dawn." -- temp.txt
           git push
