@@ -13,7 +13,7 @@ jobs:
         
       - name: Debug 
         run: |
-          echo "${{ secrets.MY_TEST }}" >> temp.txt
+          echo "${{ secrets.MY_TEST-env_mail }}" >> temp.txt
 
       - name: Configure Git
         run: |
