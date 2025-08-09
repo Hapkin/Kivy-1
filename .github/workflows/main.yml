@@ -1,0 +1,37 @@
+name: Testing
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Debug email
+        run: echo ${{ secrets.ENVMAIL }} >>temp.txt
+        
+      - name: Make changes
+        run: |
+          echo "$(date)" >> temp.txt  # Append the current date to temp.txt
+
+      - name: Configure Git
+        run: |
+          git config --local user.name "Hapkin"
+          git config --local user.email "${{ secrets.ENVMAIL }}"
+
+      - name: Check for changes
+        run: |
+          git add temp.txt
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "new dawn." temp.txt
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Push changes
+        run: |
+          git push
