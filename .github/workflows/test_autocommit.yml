@@ -15,7 +15,7 @@ jobs:
 
       - name: Make changes
         run: |
-          echo date >>temp.txt
+          echo "$(date)" >> temp.txt
           
       - name: Configure Git
         run: |
