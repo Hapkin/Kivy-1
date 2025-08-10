@@ -13,23 +13,6 @@ jobs:
         
       - name: Debug 
         run: |
-          echo "${{ env.TEST }}" >> temp.txt
-          echo user.email "${{ env.MAIL }}"
-
-      - name: Configure Git
-        run: |
-          git config --local user.name "Hapkin"
-          git config --local user.email "${{ env.MAIL }}"
-
-      - name: Check for changes
-        run: |
-          git add temp.txt
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "new dawn." temp.txt
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Push changes
-        run: |
-          git push
+          echo "${{env.TEST}}" >> temp.txt
+          echo user.email "${{env.MAIL}}"
+          echo user.email "${{secrets.MAIL}}"
