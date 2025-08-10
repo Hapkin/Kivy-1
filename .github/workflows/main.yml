@@ -13,12 +13,13 @@ jobs:
         
       - name: Debug 
         run: |
-          echo "${{ secrets.MY_TEST-env_mail }}" >> temp.txt
+          echo "${{ env.TEST }}" >> temp.txt
+          echo user.email "${{ env.MAIL }}"
 
       - name: Configure Git
         run: |
           git config --local user.name "Hapkin"
-          git config --local user.email "${{ secrets.ENVMAIL }}"
+          git config --local user.email "${{ env.MAIL }}"
 
       - name: Check for changes
         run: |
